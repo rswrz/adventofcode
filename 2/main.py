@@ -8,6 +8,9 @@ def parse(input):
 
 
 def rule1(report, debug=False):
+    if debug:
+        print("Rule1 Validation:", report)
+
     report_sorted_inclemently = sorted(report)
     report_sorted_decremental = sorted(report, reverse=True)
 
@@ -16,6 +19,8 @@ def rule1(report, debug=False):
         print("Report levels decreasing:", report_sorted_decremental)
 
     if report == report_sorted_inclemently or report == report_sorted_decremental:
+        if debug:
+            print("Report passed rule1 validation")
         return True
     else:
         print("Report is unsafe because levels ar not all increasing or all decreasing")
@@ -23,6 +28,9 @@ def rule1(report, debug=False):
 
 
 def rule2(report, debug=False):
+    if debug:
+        print("Rule2 Validation:", report)
+
     for i, level in enumerate(report):
         if i == 0:
             continue
@@ -33,7 +41,7 @@ def rule2(report, debug=False):
             if debug:
                 print("Level", curr_level, "to", prev_level, "diff is:", diff)
             if diff < 1 or diff > 3:
-                print("Report is NOT safe! Validation of rule 2 failed!")
+                print("Report", report, "is NOT safe! Validation of rule 2 failed!")
                 print("Stopping validation!")
                 return False
     return True
