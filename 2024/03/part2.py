@@ -12,7 +12,7 @@ for instruction in instructions:
     elif instruction == "do()":
         do = True
     elif do:
-        a, b = re.findall(r"\d+", instruction)
-        sum += int(a) * int(b)
+        a, b = map(int, re.findall(r"\d+", instruction))
+        sum += a * b
 
 print(sum)
