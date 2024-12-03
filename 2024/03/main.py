@@ -13,8 +13,7 @@ if __name__ == "__main__":
     sum = 0
     multiplications = re.findall(r"mul\((\d{1,3})\,(\d{1,3})\)", input)
 
-    for multiplication in multiplications:
-        product = int(multiplication[0]) * int(multiplication[1])
-        sum += product
+    for x, y in multiplications:
+        sum += int(x) * int(y)
 
     print("Sum:", sum)

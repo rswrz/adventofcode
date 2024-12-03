@@ -9,17 +9,13 @@ if __name__ == "__main__":
     instructions = re.findall(r"mul\(\d{1,3}\,\d{1,3}\)|do\(\)|don\'t\(\)", input)
 
     do = True
-    multiplications = []
     for instruction in instructions:
         if instruction == "don't()":
             do = False
         elif instruction == "do()":
             do = True
         elif do:
-            multiplications += re.findall(r"mul\((\d{1,3})\,(\d{1,3})\)", instruction)
-
-    for multiplication in multiplications:
-        product = int(multiplication[0]) * int(multiplication[1])
-        sum += product
+            x, y = re.findall(r"mul\((\d{1,3})\,(\d{1,3})\)", instruction)[0]
+            sum += int(x) * int(y)
 
     print("Sum:", sum)
