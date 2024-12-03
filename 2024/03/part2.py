@@ -1,6 +1,6 @@
 import re
 
-input = open("input.txt", "r").read()
+input = open("input.txt").read()
 instructions = re.findall(r"mul\(\d{1,3}\,\d{1,3}\)|do\(\)|don\'t\(\)", input)
 
 do = True
