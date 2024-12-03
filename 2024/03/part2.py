@@ -1,21 +1,18 @@
-from main import parse
 import re
 
+input = open("input.txt", "r").read()
+instructions = re.findall(r"mul\(\d{1,3}\,\d{1,3}\)|do\(\)|don\'t\(\)", input)
 
-if __name__ == "__main__":
-    input = parse("input.txt")
+do = True
+sum = 0
 
-    sum = 0
-    instructions = re.findall(r"mul\(\d{1,3}\,\d{1,3}\)|do\(\)|don\'t\(\)", input)
+for instruction in instructions:
+    if instruction == "don't()":
+        do = False
+    elif instruction == "do()":
+        do = True
+    elif do:
+        a, b = re.findall(r"\d+", instruction)
+        sum += int(a) * int(b)
 
-    do = True
-    for instruction in instructions:
-        if instruction == "don't()":
-            do = False
-        elif instruction == "do()":
-            do = True
-        elif do:
-            x, y = re.findall(r"mul\((\d{1,3})\,(\d{1,3})\)", instruction)[0]
-            sum += int(x) * int(y)
-
-    print("Sum:", sum)
+print(sum)
