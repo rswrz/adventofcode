@@ -20,7 +20,7 @@ for x, y in X_coordinates:
         "right_up": "".join([data[y][x], data[y - 1][x + 1], data[y - 2][x + 2], data[y - 3][x + 3]]) if x + 3 <= max and y - 3 >= 0 else None,
         "left_down": "".join([data[y][x], data[y + 1][x - 1], data[y + 2][x - 2], data[y + 3][x - 3]]) if x - 3 >= 0 and y + 3 <= max else None,
         "left_up": "".join([data[y][x], data[y - 1][x - 1], data[y - 2][x - 2], data[y - 3][x - 3]]) if x - 3 >= 0 <= y - 3 else None,
-    }
+    }  # fmt: skip
 
     count += list(XMAS.values()).count("XMAS")
 

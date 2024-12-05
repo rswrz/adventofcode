@@ -1,7 +1,12 @@
 def valid_page_order(update, rules):
     for i, page in enumerate(update):
         for before, after in rules:
-            if page == before and i > update.index(after) or page == after and i < update.index(before):
+            if (
+                page == before
+                and i > update.index(after)
+                or page == after
+                and i < update.index(before)
+            ):
                 return False
     return True
 
